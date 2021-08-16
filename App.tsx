@@ -2,16 +2,19 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import React from "react";
 import { Provider } from "react-redux";
-import HomeScreen from "./src/screens/HomeScreen";
-import MapScreen from "./src/screens/MapScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+//components
+import HomeScreen from "./src/screens/HomeScreen";
+import MapScreen from "./src/screens/MapScreen";
+import FoodScreen from "./src/screens/FoodScreen";
 //utils
 import { store } from "./store";
 
 const screens = [
   { name: "HomeScreen", component: HomeScreen },
   { name: "MapScreen", component: MapScreen },
+  { name: "FoodScreen", component: FoodScreen },
 ];
 
 export default function App() {

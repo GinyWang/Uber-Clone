@@ -8,7 +8,7 @@ import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 //constants
 import { StackScreenKeyList, ScreenKeys } from "../../constants/screen";
 
-type MapScreenProp = StackNavigationProp<StackScreenKeyList, "HomeScreen">;
+type ScreenProp = StackNavigationProp<StackScreenKeyList, "HomeScreen">;
 
 interface Data {
   key: ScreenKeys;
@@ -29,7 +29,7 @@ const dataList: Array<Data> = [
 ];
 
 const NavOptions = () => {
-  const navigation = useNavigation<MapScreenProp>();
+  const navigation = useNavigation<ScreenProp>();
 
   return (
     <FlatList

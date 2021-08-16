@@ -1,6 +1,8 @@
 import React from "react";
 import tw from "tailwind-react-native-classnames";
-import { StyleSheet, Text, View, SafeAreaView, Image } from "react-native";
+import { View, SafeAreaView, Image } from "react-native";
+//component
+import NavOptions from "../../components/NavOptions";
 
 export default function HomeScreen() {
   return (
@@ -11,6 +13,7 @@ export default function HomeScreen() {
           source={require("./img/uberLogo.png")}
         />
       </View>
+      <NavOptions />
     </SafeAreaView>
   );
 }

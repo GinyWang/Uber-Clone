@@ -1,11 +1,20 @@
 import React from "react";
 import { View, Text } from "react-native";
+import tw from "tailwind-react-native-classnames";
+import MapView from "react-native-maps";
 
 const Map = () => {
   return (
-    <View>
-      <Text>a map</Text>
-    </View>
+    <MapView
+      style={tw`flex-1`}
+      mapType="mutedStandard"
+      initialRegion={{
+        latitude: 37.78825,
+        longitude: -122.4324,
+        latitudeDelta: 0.0922,
+        longitudeDelta: 0.0421,
+      }}
+    />
   );
 };
 

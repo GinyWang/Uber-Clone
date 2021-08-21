@@ -6,23 +6,21 @@
     "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
-    "lib": [
-      "es6"
-    ],
+    "lib": ["es6"],
     "moduleResolution": "node",
     "noEmit": true,
     "strict": true,
     "target": "esnext",
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
-      "components/*": [
-        "src/components/*"
-      ]
+      "components/*": ["components/*"],
+      "utils/*": ["utils/*"],
+      "constant/*": ["constant/*"],
+      "slices/*": ["slices*"],
+      "screens/*": ["screens/*"]
     }
   },
-  "include": [
-    "src/**/*"
-  ],
+  "include": ["src/**/*"],
   "exclude": [
     "node_modules",
     "babel.config.js",

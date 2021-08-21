@@ -9,7 +9,7 @@ import HomeScreen from "./src/screens/HomeScreen";
 import MapScreen from "./src/screens/MapScreen";
 import FoodScreen from "./src/screens/FoodScreen";
 //utils
-import { store } from "./store";
+import { store } from "./src/utils/store";
 
 const screens = [
   { name: "HomeScreen", component: HomeScreen },

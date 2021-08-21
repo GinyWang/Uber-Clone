@@ -7,6 +7,9 @@ import { useNavigation } from "@react-navigation/native";
 import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
 //constants
 import { StackScreenKeyList, ScreenKeys } from "../../constants/screen";
+//utils
+import { useAppSelector } from "../../../../utils/hooks";
+import { selectOrigin } from "../../../../slices/navSlice";
 
 type ScreenProp = StackNavigationProp<StackScreenKeyList, "HomeScreen">;
 
@@ -30,6 +33,7 @@ const dataList: Array<Data> = [
 
 const NavOptions = () => {
   const navigation = useNavigation<ScreenProp>();
+  const origin = useAppSelector((state) => selectOrigin(state.nav));
 
   return (
     <FlatList
@@ -37,7 +41,11 @@ const NavOptions = () => {
       keyExtractor={(item) => item.key}
       horizontal
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => navigation.navigate(item.key)}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate(item.key)}
+          disabled={!origin}
+          style={tw`${!origin ? "opacity-10" : ""}`}
+        >
           <View style={tw`p-2 pl-6 pb-8 pt-4 m-2 bg-gray-100 w-40`}>
             <Image
               style={{ width: 120, height: 120 }}
@@ -50,7 +58,7 @@ const NavOptions = () => {
               name="arrowright"
               color="white"
               type="antdesign"
-            ></Icon>
+            />
           </View>
         </TouchableOpacity>
       )}

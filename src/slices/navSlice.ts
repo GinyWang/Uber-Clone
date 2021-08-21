@@ -1,11 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { Point } from "react-native-google-places-autocomplete";
+import { Place } from "../constants";
 
-interface InitialState {
-  origin: string | null;
-  destination: string | null;
+interface NavState {
+  origin: Place | null;
+  destination: Place | null;
   travelTimeInformation: string | null;
 }
-const initialState: InitialState = {
+const initialState: NavState = {
   origin: null,
   destination: null,
   travelTimeInformation: null,
@@ -15,14 +17,14 @@ export const navSlice = createSlice({
   name: "nav",
   initialState,
   reducers: {
-    setOrigin: (state, action) => {
+    setOrigin: (state: NavState, action: PayloadAction<Place | null>) => {
       state.origin = action.payload;
     },
-    setDestination: (state, action) => {
-      state.origin = action.payload;
+    setDestination: (state: NavState, action: PayloadAction<Place | null>) => {
+      state.destination = action.payload;
     },
-    setTravelTimeInformation: (state, action) => {
-      state.origin = action.payload;
+    setTravelTimeInformation: (state: NavState, action) => {
+      state.travelTimeInformation = action.payload;
     },
   },
 });
@@ -31,10 +33,9 @@ export const { setOrigin, setDestination, setTravelTimeInformation } =
   navSlice.actions;
 
 //Selectors
-export const selectOrigin = (state: { nav: InitialState }) => state.nav.origin;
-export const selectDestination = (state: { nav: InitialState }) =>
-  state.nav.destination;
-export const selectTravelTimeInformation = (state: { nav: InitialState }) =>
-  state.nav.travelTimeInformation;
+export const selectOrigin = (state: NavState) => state.origin;
+export const selectDestination = (state: NavState) => state.destination;
+export const selectTravelTimeInformation = (state: NavState) =>
+  state.travelTimeInformation;
 
 export default navSlice.reducer;

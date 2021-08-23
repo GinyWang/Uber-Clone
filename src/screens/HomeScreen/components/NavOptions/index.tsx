@@ -4,9 +4,9 @@ import { FlatList, Image, Text, TouchableOpacity, View } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { Icon } from "react-native-elements";
 import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp, StackScreenProps } from "@react-navigation/stack";
+import { StackNavigationProp } from "@react-navigation/stack";
 //constants
-import { StackScreenKeyList, ScreenKeys } from "../../constants/screen";
+import { StackScreenKeyList, ScreenKeys } from "constants/screen";
 //utils
 import { useAppSelector } from "../../../../utils/hooks";
 import { selectOrigin } from "../../../../slices/navSlice";

@@ -4,3 +4,13 @@ export interface Place {
   location: Point | undefined;
   description: string | undefined;
 }
+export interface TravelTimeInformation {
+  distance: {
+    text: string;
+    value: number;
+  };
+  duration: {
+    text: string;
+    value: number;
+  };
+}

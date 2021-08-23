@@ -20,7 +20,7 @@ const GooglePlaceSearch = (props: Props) => {
   const { handlePress, handleInputChange, placeholder } = props;
 
   return (
-    <View style={[{ zIndex: 2, backgroundColor: "white" }]}>
+    <View style={[{ zIndex: 10, backgroundColor: "white" }]}>
       <GooglePlacesAutocomplete
         placeholder={placeholder}
         query={{

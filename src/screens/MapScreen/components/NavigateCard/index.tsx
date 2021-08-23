@@ -1,19 +1,22 @@
 //lib
 import React from "react";
-import { View, Text, SafeAreaView } from "react-native";
-import { selectOrigin, setDestination } from "../../../../slices/navSlice";
+import { View, Text, SafeAreaView, TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import tw from "tailwind-react-native-classnames";
+import { StackNavigationProp } from "@react-navigation/stack";
 import {
   GooglePlaceDetail,
   GooglePlaceData,
 } from "react-native-google-places-autocomplete";
+//utils
+import { selectOrigin, setDestination } from "../../../../slices/navSlice";
+import { useAppDispatch, useAppSelector } from "../../../../utils/hooks";
 //components
 import GooglePlaceSearch from "../../../../components/GooglePlaceSearch";
-import { useAppDispatch, useAppSelector } from "../../../../utils/hooks";
+import NavFavorites from "../../../../components/NavFavorites";
+import NavBar from "./navBar";
 //constants
 import { Place } from "constants/";
-import { useNavigation } from "@react-navigation/native";
-import { StackNavigationProp } from "@react-navigation/stack";
 import { RootStackParamList } from "../../constants/stackList";
 
 type NavigateCardScreenProp = StackNavigationProp<
@@ -55,6 +58,9 @@ const NavigateCard = () => {
     dispatch(setDestination(destinationPlace));
     navigation.navigate("RideOptions");
   };
+  const handlePressFav = (address: string) => {
+    console.log(address);
+  };
 
   return (
     <SafeAreaView style={tw`flex-1 bg-white p-3`}>
@@ -69,6 +75,8 @@ const NavigateCard = () => {
           handleInputChange={handleInputChange}
         />
       </View>
+      {/*} <NavFavorites handlePress={handlePressFav} />*/}
+      <NavBar />
     </SafeAreaView>
   );
 };

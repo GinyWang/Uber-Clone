@@ -1,10 +1,14 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
+//components
+import Top from "./top";
+import Cars from "./cars";
 
 const RideOptions = () => {
   return (
     <View>
-      <Text>ride</Text>
+      <Top />
+      <Cars />
     </View>
   );
 };

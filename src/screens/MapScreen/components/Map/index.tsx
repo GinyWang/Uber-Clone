@@ -9,12 +9,14 @@ import {
   selectOrigin,
   setDestination,
   setOrigin,
+  setTravelTimeInformation,
 } from "../../../../slices/navSlice";
-import { useAppSelector } from "../../../../utils/hooks";
+import { useAppDispatch, useAppSelector } from "../../../../utils/hooks";
 //constants
 import { GOOGLE_MAP_API_KEY } from "@env";
 
 const Map = () => {
+  const dispatch = useAppDispatch();
   const markers = {
     origin: {
       name: "Origin",
@@ -37,6 +39,23 @@ const Map = () => {
       });
       mapRef.current.fitToElements(false);
     }
+  }, [originPlace, destinationPlace]);
+
+  useEffect(() => {
+    const getTravelTime = async () => {
+      try {
+        if (originPlace && destinationPlace) {
+          const url = `https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=${originPlace.location?.lat},${originPlace.location?.lng}&destinations=${destinationPlace.location?.lat},${destinationPlace.location?.lng}&key=${GOOGLE_MAP_API_KEY}`;
+          const response = await fetch(url);
+          const data = await response.json();
+          if (data) console.log("data:", data.rows[0].elements[0]);
+          dispatch(setTravelTimeInformation(data.rows[0].elements[0]));
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getTravelTime();
   }, [originPlace, destinationPlace]);
 
   return (
@@ -79,6 +98,9 @@ const Map = () => {
           }}
           apikey={GOOGLE_MAP_API_KEY}
           strokeWidth={3}
+          onError={(error) => {
+            console.error(error);
+          }}
         />
       )}
     </MapView>
